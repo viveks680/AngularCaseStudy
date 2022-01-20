@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
+//import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotesHomeComponent } from './notes-home/notes-home.component';
 
@@ -17,7 +17,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {path: '', redirectTo: 'notesHome', pathMatch:'full'},
-  {path: 'notesHome', component:NoteComponent}
+  {path: 'notesHome', component:NotesHomeComponent, children:[
+    {path: 'note', component:NoteComponent}
+  ]}
 ]
 
 
@@ -30,7 +32,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    //AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

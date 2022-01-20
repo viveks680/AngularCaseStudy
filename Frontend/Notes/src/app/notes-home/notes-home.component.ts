@@ -25,8 +25,8 @@ export class NotesHomeComponent implements OnInit{
 
   ngOnInit() : void {
     this.notesHomeService.getAllNotes("userId").subscribe((data)=>{
-      console.log(data)
       this.notes = data
+      console.log(this.notes)
      })
   }
   
@@ -41,6 +41,7 @@ export class NotesHomeComponent implements OnInit{
   showRecentNotes(){
     this.notesHomeService.getRecentNotes().subscribe((data)=>{
       this.notes = data
+      console.log(data)
     })
   }
 
