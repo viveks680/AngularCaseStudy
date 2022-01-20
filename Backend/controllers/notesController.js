@@ -1,72 +1,73 @@
 const notesModel = require('../models/notesModel')
 
 //1. localhost:3000/api/notes/
-//post
-exports.createNote = (req, res) =>{
-    console.log(req.body)
-    notesModel.create(req.body)
-    res.status('200').json(req.body)
+//GET
+exports.getAllNotes = async (req, res) => {
+    console.log("Fetching notes")
+    const notes = await noteModel.find({})
+    console.log(notes)
+    res.status(200).json(notes)
 }
-//get
-exports.getAllNotes = async(req, res)=>{
-    const notes = await notesModel.find().all()
-    res.status('200').json(notes)
+//POST
+exports.createNote = async (req, res) => {
+    console.log(req.body)
+    const note = await noteModel.create(req.body)
+    console.log(note)
+    res.status(200).json({"message": "note created"})
 }
 
 
 //2. localhost:3000/api/notes/important
-//get
-exports.getImpNotes = async(req, res)=>{
-    const notes = await notesModel.find({'important': true})
-    res.status('200').json(notes)
+//GET
+exports.getImportantNotes = async (req, res) => {
+    console.log("Fetching important notes")
+    const notes = await noteModel.find({'important': true})
+    console.log(notes)
+    res.status(200).json(notes)
 }
+
 
 //3. localhost:3000/api/notes/note/:id
-//get
-exports.getNote = async(req, res)=>{
-    const note = await notesModel.findById(req.params.id)
-    res.status('200').json(note)
-}
-//patch
-exports.patchNote = async(req, res)=>{
-    const note = await notesModel.findByIdAndUpdate(req.params.id, {$set:
-        {'title': req.body.title, 
-        'body':req.body.body, 
-        'important':req.body.important, 
-        'dateCreated':req.body.dateCreated}},
-        {new:true})
-    res.status('200').json(note)
-
-    //old
-    /*const note = await notesModel.updateOne({_id: req.params.id, {$set:
-        {'title': req.body.title, 
-        'body':req.body.body, 
-        'important':req.body.important, 
-        'dateCreated':req.body.dateCreated}}*/
-
-}
-//delete
-exports.deleteNote = async(req, res)=>{
-    const note = await notesModel.deleteOne({'_id':req.params.id})
-    res.status('200').json(note)
+//GET
+exports.getNote = async (req, res) => {
+    console.log(req.params.id)
+    const note = await noteModel.findById(req.params.id)
+    res.status(200).json(note)
 }
 
-//4. Get 3 most recent notes: get you can use .sort() and .limit()
-//localhost:3000/api/notes/recent
-exports.getRecent = async(req, res)=>{
-    const notes = await notesModel.find().sort({'dateCreated': -1}).limit(3)
-    res.status('200').json(notes)
+//PATCH
+exports.patchNote = async (req, res) => {
+    console.log("Updating note")
+    const note = await noteModel.findByIdAndUpdate(req.params.id, req.body)
+    res.status(200).json({"message": "note updated"})
+}
+
+//DELETE
+exports.deleteNote = async (req, res) => {
+    console.log("Deleting note")
+    const note = await noteModel.findByIdAndDelete(req.params.id)
+    res.status(200).json({"message": "note deleted"})
+}
+
+
+//4. localhost:3000/api/notes/recent
+//GET
+exports.getRecentNotes = async (req, res) => {
+    console.log("Fetching recent notes")
+    const notes = await noteModel.find({}).sort({'dateCreated': -1}).limit(3)
+    console.log(notes)
+    res.status(200).json(notes)
 }
 
 //5. get notes from certain date
 //localhost:3000/api/notes/date
+//POST
 exports.getNoteFromDate = async(req,res)=>{
-    const startOfday = new Date(new Date(req.body.date).setUTCHours(0,0,0)) //setHours is based on local time zone
-    const endOfDay = new Date(new Date(req.body.date).setUTCHours(23,59,59)) //setUTCHours should be better. I think. Or use setHours(+18,0,0) or something
-    //console.log(startOfday)
-    //console.log(endOfDay)
-    //console.log(req.body.date)
-    //const notes = await notesModel.find({'dateCreated': req.body.dateCreated})
-    const notes = await notesModel.find({'dateCreated': {$gte: startOfday, $lte: endOfDay}})
-    res.status('200').json(notes)
+    console.log("Fetching notes from date")
+    const date = new Date(req.body.date)
+    const notes = await notesModel.find({'dateCreated': {
+        $gte: new Date(date).setHours(00, 00, 00), $lte: new Date(date).setHours(23, 59, 59)}
+    })
+    console.log(notes)
+    res.status(200).json(notes)
 }
