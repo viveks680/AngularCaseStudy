@@ -4,6 +4,7 @@ const express = require('express')
 const notesRouter = express.Router()
 
 notesRouter.route('/api/notes').get(notesController.getAllNotes)
+
 notesRouter.route('/api/notes').post(notesController.createNote)
 
 notesRouter.route('/api/notes/note/:id').get(notesController.getNote)

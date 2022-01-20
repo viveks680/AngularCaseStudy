@@ -1,0 +1,24 @@
+<h1 style="text-align:center;color:Black;font-size:30px;font-family:Lato;">Notes Home</h1>
+<div class="centered-content">
+    
+    <div class="notes-manager-container">
+        <div class="sidebar has-background-white">
+            <h1 class="title has-text-primary">Menu:</h1>
+            <!-- <button class="button is-primary">Test</button> -->
+            <button class="title has-text-primary" (click) = "showAll()">Show All</button>
+            <button class="title has-text-primary" (click) = "showRecentNotes()">Show Recent</button>
+        </div>
+        
+        <div class="notes-list-container has-background-light">
+            <h1 class="title has-text-primary">Notes</h1>
+
+            <a *ngFor = "let note of notes">
+                <div> 
+                    <h2>{{note.title}}</h2>
+                    <p>{{note.body}}</p>
+                </div>
+            </a>
+            
+        </div>
+    </div>
+</div>
