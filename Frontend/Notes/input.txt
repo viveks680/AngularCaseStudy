@@ -1,0 +1,82 @@
+[
+    {
+        "_id": "61ccb48e0da043c709c33b4f",
+        "title": "First Note",
+        "body": "This is the first note created",
+        "dateCreated": "2019-01-14T20:44:21.000Z",
+        "important": true,
+        "__v": 0
+    },
+    {
+        "_id": "61ccb48e0da043c709c33b50",
+        "title": "Second Note",
+        "body": "This is the second note created",
+        "dateCreated": "2019-02-06T20:44:21.000Z",
+        "important": false,
+        "__v": 0
+    },
+    {
+        "_id": "61ccb48e0da043c709c33b51",
+        "title": "Third Note",
+        "body": "This is the third note created",
+        "dateCreated": "2019-05-15T20:44:21.000Z",
+        "important": false,
+        "__v": 0
+    },
+    {
+        "_id": "61ccb48e0da043c709c33b52",
+        "title": "Welcome Note",
+        "body": "Welcome, in this website you can add notes and prioritize them based on your needs. You can add a title, date created and how important the note is to you. You can also edit and delete old notes, and add new notes",
+        "dateCreated": "2020-01-31T20:44:21.000Z",
+        "important": true,
+        "__v": 0
+    },
+    {
+        "_id": "61ccb48e0da043c709c33b53",
+        "title": "Future Note",
+        "body": "This is the first note entered through mongoose",
+        "dateCreated": "2021-12-29T20:44:21.000Z",
+        "important": false,
+        "__v": 0
+    },
+    {
+        "_id": "61ccb83b8655c815ea827b63",
+        "title": "new note",
+        "body": "newest of them all",
+        "dateCreated": "2021-12-29T19:22:08.550Z",
+        "important": false,
+        "__v": 0
+    },
+    {
+        "_id": "61ccb8b7abce6fb8b1f4c69d",
+        "title": "Another new note",
+        "body": "newester of them all",
+        "dateCreated": "2021-12-29T19:35:20.260Z",
+        "important": false,
+        "__v": 0
+    },
+    {
+        "_id": "61cccec4c98f6a36978efa9f",
+        "title": "Another damn new note",
+        "body": "newerester of them all",
+        "dateCreated": "2021-12-29T21:10:20.066Z",
+        "important": false,
+        "__v": 0
+    },
+    {
+        "_id": "61e8a32428522ab512a70a8f",
+        "title": "I'm a hippo?",
+        "body": "Nah I'm a capybara",
+        "dateCreated": "2022-01-19T23:37:13.603Z",
+        "important": false,
+        "__v": 0
+    },
+    {
+        "_id": "61e8c57ef58062534b4f4d33",
+        "title": "I'm a platypus?",
+        "body": "Nah I'm a hippo",
+        "dateCreated": "2022-01-20T02:06:43.510Z",
+        "important": false,
+        "__v": 0
+    }
+]
