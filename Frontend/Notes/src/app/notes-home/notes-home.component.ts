@@ -21,11 +21,13 @@ export class NotesHomeComponent implements OnInit{
   constructor( private notesHomeService: NotesHomeService, private router: Router) { }
   
   notes : any
+  notes2: any
   showAllNotes = true
 
   ngOnInit() : void {
     this.notesHomeService.getAllNotes("userId").subscribe((data)=>{
       this.notes = data
+      this.notes2 = this.notes
       console.log(this.notes)
      })
   }

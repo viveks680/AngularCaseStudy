@@ -1,24 +1,72 @@
-<h1 style="text-align:center;color:Black;font-size:30px;font-family:Lato;">Notes Home</h1>
+<nav class="navbar has-shadow">
+    <div class="container">
+        <div class="navbar-brand"><a class="navbar-item" style="font-weight: bolder;font-size: larger;">Notes Home</a>
+            <div class="navbar-burger burger" data-target="navMenu"><span></span><span></span><span></span></div>
+        </div>
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link">Account</a>
+                    <div class="navbar-dropdown"><a class="navbar-item">Dashboard</a><a class="navbar-item">Profile</a><a class="navbar-item">Settings</a>
+                    <hr class="navbar-divider" />
+                    <div class="navbar-item">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
 <div class="centered-content">
-    
     <div class="notes-manager-container">
         <div class="sidebar has-background-white">
             <h1 class="title has-text-primary">Menu:</h1>
-            <!-- <button class="button is-primary">Test</button> -->
             <button class="title has-text-primary" (click) = "showAll()">Show All</button>
             <button class="title has-text-primary" (click) = "showRecentNotes()">Show Recent</button>
         </div>
         
         <div class="notes-list-container has-background-light">
             <h1 class="title has-text-primary">Notes</h1>
-
+            <br>
             <a *ngFor = "let note of notes">
-                <div> 
-                    <h2>{{note.title}}</h2>
-                    <p>{{note.body}}</p>
-                </div>
+                <article class="message is-link"> 
+                    <div class="message-header">{{note.title}}<button class="delete" aria-label="delete"></button></div>
+                    <div class="message-body">{{note.body}}</div>
+                </article>
             </a>
-            
+        </div>
+        <div class="notes-list-container has-background-light">
+            <h1 class="title has-text-primary">Important notes</h1>
+            <br>
+            <a *ngFor = "let note of notes2">
+                <a *ngIf ="note.important">
+                    <article class="message is-danger"> 
+                        <div class="message-header">{{note.title}}<button class="delete" aria-label="delete"></button></div>
+                        <div class="message-body">{{note.body}}</div>
+                    </article>
+                </a>
+            </a>
         </div>
     </div>
 </div>
+
+
+<!-- <h1 style="text-align:center;color:Black;font-size:30px;font-family:Lato;">Notes Home</h1>
+<div class="centered-content">
+    <div class="notes-manager-container">
+        <div class="sidebar has-background-white">
+            <h1 class="title has-text-primary">Menu:</h1>
+            <button class="title has-text-primary" (click) = "showAll()">Show All</button>
+            <button class="title has-text-primary" (click) = "showRecentNotes()">Show Recent</button>
+        </div>
+        
+        <div class="notes-list-container has-background-light">
+            <h1 class="title has-text-primary">Notes</h1>
+            <br>
+            <a *ngFor = "let note of notes">
+                <article class="message is-link"> 
+                    <div class="message-header">{{note.title}}<button class="delete" aria-label="delete"></button></div>
+                    <div class="message-body">{{note.body}}</div>
+                </article>
+            </a>
+        </div>
+    </div>
+</div> -->
