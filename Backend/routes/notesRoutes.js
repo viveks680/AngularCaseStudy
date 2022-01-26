@@ -4,23 +4,23 @@ const express = require('express')
 const notesRouter = express.Router()
 
 // note access points
-notesRouter.route('/api/notes')
+notesRouter.route('/api/:user/notes')
     .get(notesController.getAllNotes)
     .post(notesController.createNote)
 
-notesRouter.route('/api/notes/note/:id')
+notesRouter.route('/api/:user/notes/note/:id')
     .get(notesController.getNote)
     .patch(notesController.patchNote)
     .delete(notesController.deleteNote)
 
-notesRouter.route('/api/notes/recent')
+notesRouter.route('/api/:user/notes/recent')
     .get(notesController.getRecent)
 
-notesRouter.route('/api/notes/important')
+notesRouter.route('/api/:user/notes/important')
     .get(notesController.getImpNotes)
 
 
-notesRouter.route('/api/notes/date')
+notesRouter.route('/api/:user/notes/date')
     .post(notesController.getNoteFromDate)
 
 module.exports = notesRouter
