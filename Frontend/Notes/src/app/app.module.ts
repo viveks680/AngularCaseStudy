@@ -13,12 +13,24 @@ import { NoteComponent } from './note/note.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { CookieModule } from 'ngx-cookie';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'notesHome', pathMatch:'full'},
+  {path: '', redirectTo: 'login', pathMatch:'full'},
+  {path: 'login', component:LoginComponent},
   {path: 'notesHome', component:NotesHomeComponent, children:[
-    {path: 'note', component:NoteComponent}
+  {path: 'note', component:NoteComponent}
+    
   ]}
 ]
 
@@ -28,11 +40,23 @@ const routes: Routes = [
     AppComponent,
     NotesHomeComponent,
     HighlighterDirective,
-    NoteComponent
+    NoteComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     //AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

@@ -5,6 +5,8 @@ const notesModel = require('./models/notesModel')
 const notesRouter = require('./routes/notesRoutes')
 const authRoute = require('./routes/auth')
 const bodyparser = require('body-parser');
+const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
 const app = express()
 
@@ -25,11 +27,14 @@ app.use((req, res, next) => {
 app.use(cors(options))
 
 app.use(notesRouter)
-app.use('/api/user', authRoute);
+app.use(authRoute);
 app.use(cookieParser)
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/teamCollab', ()=>{
+    // mongoose.connection.db.dropCollection('user', function(err, result) {
+    //   console.log("Dropped notes?: "+ String(result))
+    // })
     console.log('Database Connected');
 })
 

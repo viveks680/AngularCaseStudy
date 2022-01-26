@@ -1,5 +1,5 @@
 const notesModel = require('../models/notesModel')
-const userModel = require('../models/User')
+const userModel = require('../models/user')
 
 //1. localhost:3000/api/:user/notes/
 //GET

@@ -14,10 +14,10 @@ notesRouter.route('/api/:user/notes/note/:id')
     .delete(notesController.deleteNote)
 
 notesRouter.route('/api/:user/notes/recent')
-    .get(notesController.getRecent)
+    .get(notesController.getRecentNotes)
 
 notesRouter.route('/api/:user/notes/important')
-    .get(notesController.getImpNotes)
+    .get(notesController.getImportantNotes)
 
 
 notesRouter.route('/api/:user/notes/date')
