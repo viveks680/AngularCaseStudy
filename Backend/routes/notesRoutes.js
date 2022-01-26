@@ -3,19 +3,24 @@ const express = require('express')
 
 const notesRouter = express.Router()
 
-notesRouter.route('/api/notes').get(notesController.getAllNotes)
+// note access points
+notesRouter.route('/api/:user/notes')
+    .get(notesController.getAllNotes)
+    .post(notesController.createNote)
 
-notesRouter.route('/api/notes').post(notesController.createNote)
+notesRouter.route('/api/:user/notes/note/:id')
+    .get(notesController.getNote)
+    .patch(notesController.patchNote)
+    .delete(notesController.deleteNote)
 
-notesRouter.route('/api/notes/note/:id').get(notesController.getNote)
-notesRouter.route('/api/notes/note/:id').patch(notesController.patchNote)
-notesRouter.route('/api/notes/note/:id').delete(notesController.deleteNote)
+notesRouter.route('/api/:user/notes/recent')
+    .get(notesController.getRecent)
 
-notesRouter.route('/api/notes/recent').get(notesController.getRecent)
-
-notesRouter.route('/api/notes/important').get(notesController.getImpNotes)
+notesRouter.route('/api/:user/notes/important')
+    .get(notesController.getImpNotes)
 
 
-notesRouter.route('/api/notes/date').post(notesController.getNoteFromDate)
+notesRouter.route('/api/:user/notes/date')
+    .post(notesController.getNoteFromDate)
 
 module.exports = notesRouter

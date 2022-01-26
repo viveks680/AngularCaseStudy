@@ -41,15 +41,15 @@ export class NotesHomeComponent implements OnInit{
   }
 
   showRecentNotes(){
-    this.notesHomeService.getRecentNotes().subscribe((data)=>{
+    this.notesHomeService.getRecentNotes("userId").subscribe((data)=>{
       this.notes = data
       console.log(data)
     })
   }
 
-  // showImportantNotes(){
-  //   this.notesHomeService.getImpNotes().subscribe((data)=>{
-  //     this.notes = data
-  //   })
-  // } 
+  showImportantNotes(){
+    this.notesHomeService.getImpNotes("userId").subscribe((data)=>{
+      this.notes = data
+    })
+  } 
 }
